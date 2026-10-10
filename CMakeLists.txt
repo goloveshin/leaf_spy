@@ -76,5 +76,11 @@ if(LEAF_SPY_BUILD_TESTS)
             DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
     )
 
+    enable_testing()
+    add_test(
+        NAME leaf_spy_tests
+        COMMAND leaf_spy_tests
+    )
+
     add_subdirectory(example)
 endif()

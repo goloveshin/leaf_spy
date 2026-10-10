@@ -1,5 +1,7 @@
 # leaf_spy
 
+[![CI](https://github.com/goloveshin/leaf_spy/actions/workflows/ci.yml/badge.svg)](https://github.com/goloveshin/leaf_spy/actions/workflows/ci.yml)
+
 A small header-only wrapper around [Boost.LEAF](https://www.boost.org/doc/libs/release/libs/leaf/doc/html/index.html).
 
 `leaf_spy::try_catch` is `leaf::try_catch` plus one extra catcher, the **Spy**. The Spy is a handler by pointers: it sees **any** set of types in an exception, even if none of your handlers matched. It is the place to check an agreement (for example "every exception has a domain"), to log everything in one format, or to do something specific.
@@ -37,8 +39,10 @@ The unit tests and the example are built only when `leaf_spy` is the top-level p
 ```text
 cmake -S . -B build -G Ninja
 cmake --build build
-build/leaf_spy_tests
+ctest --test-dir build --output-on-failure
 ```
+
+CI builds and tests it on Linux (GCC, Clang) and Windows (MSVC).
 
 ## Layout
 

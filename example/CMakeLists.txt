@@ -53,3 +53,8 @@ target_link_libraries(
         leaf_spy::leaf_spy
         leaf_spy_example_libraries
 )
+
+add_test(
+    NAME leaf_spy_example
+    COMMAND leaf_spy_example
+)
