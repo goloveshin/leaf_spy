@@ -1,6 +1,6 @@
 # leaf_spy
 
-[![CI](https://github.com/goloveshin/leaf_spy/actions/workflows/ci.yml/badge.svg)](https://github.com/goloveshin/leaf_spy/actions/workflows/ci.yml)
+[![Linux CI](https://github.com/goloveshin/leaf_spy/actions/workflows/linux-ci.yml/badge.svg)](https://github.com/goloveshin/leaf_spy/actions/workflows/linux-ci.yml) [![Windows CI](https://github.com/goloveshin/leaf_spy/actions/workflows/windows-ci.yml/badge.svg)](https://github.com/goloveshin/leaf_spy/actions/workflows/windows-ci.yml)
 
 A small header-only wrapper around [Boost.LEAF](https://www.boost.org/doc/libs/release/libs/leaf/doc/html/index.html).
 

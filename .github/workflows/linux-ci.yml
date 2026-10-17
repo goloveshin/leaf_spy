@@ -1,4 +1,4 @@
-name: CI
+name: Linux CI
 
 on:
   push:
@@ -10,27 +10,23 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: linux-ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
     name: ${{ matrix.name }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
-          - name: Linux, GCC
-            os: ubuntu-latest
+          - name: GCC
             cc: gcc
             cxx: g++
-          - name: Linux, Clang
-            os: ubuntu-latest
+          - name: Clang
             cc: clang
             cxx: clang++
-          - name: Windows, MSVC
-            os: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -38,16 +34,11 @@ jobs:
       # CMake 4.0 or newer (cmake_minimum_required) and Ninja
       - uses: lukka/get-cmake@latest
 
-      - name: Configure (Linux)
-        if: runner.os == 'Linux'
+      - name: Configure
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cxx }}
         run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-
-      - name: Configure (Windows)
-        if: runner.os == 'Windows'
-        run: cmake -S . -B build
 
       - name: Build
         run: cmake --build build --config Release
